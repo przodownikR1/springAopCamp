@@ -10,20 +10,16 @@ buildscript {
 		classpath 'io.spring.gradle:dependency-management-plugin:0.5.3.RELEASE'
 	}
 }
-
 apply plugin: 'java'
 apply plugin: 'spring-boot'
 apply plugin: 'io.spring.dependency-management'
-
 jar {
 	baseName = 'spring-aop-camp'
 	version = '0.1.0-SNAPSHOT'
 }
-
 repositories {
 	mavenCentral()
 }
-
 
 ext {
     springDataVersion = 'Fowler-RELEASE'
@@ -49,6 +45,7 @@ dependencies {
 	
 	compile 'org.springframework.boot:spring-boot-starter-thymeleaf'
     compile 'org.springframework.boot:spring-boot-starter-logging'
+    compile 'org.springframework.boot:spring-boot-starter-aop'
     compile 'org.springframework.boot:spring-boot-starter-data-jpa'
     compile 'org.springframework.data:spring-data-rest-webmvc'
     compile 'org.springframework:spring-core'

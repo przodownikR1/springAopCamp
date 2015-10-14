@@ -28,7 +28,6 @@ public class AopProfiler {
 
 		AspectJExpressionPointcut pointcut = new AspectJExpressionPointcut();
 		pointcut.setExpression("execution(public * org.springframework.data.repository.Repository+.*(..))");
-
 		return new DefaultPointcutAdvisor(pointcut, interceptor());
 	}
 }
