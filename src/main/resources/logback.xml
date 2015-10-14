@@ -18,6 +18,8 @@
 	</appender>
 	
 	<logger name="org.springframework.aop.interceptor" level="trace" />
+    <logger name="pl.java.scalatech" level="trace" />
+    <logger name="pl.java.scalatech.trace" level="trace"/>
 
 	<root level="INFO">
 	    <appender-ref ref="console"/>

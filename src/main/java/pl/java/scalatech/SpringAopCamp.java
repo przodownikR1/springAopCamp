@@ -13,14 +13,14 @@ import pl.java.scalatech.repository.PersonRepository;
 
 @SpringBootApplication
 @Slf4j
-public class SpringDataTestApplication implements CommandLineRunner{
+public class SpringAopCamp implements CommandLineRunner{
 
     @Autowired
     private PersonRepository personRepository;
     
     
     public static void main(String[] args) {
-        SpringApplication.run(SpringDataTestApplication.class, args);
+        SpringApplication.run(SpringAopCamp.class, args);
     }
 
     @Override

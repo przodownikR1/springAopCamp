@@ -3,6 +3,7 @@ package pl.java.scalatech.config;
 import org.springframework.aop.Advisor;
 import org.springframework.aop.aspectj.AspectJExpressionPointcut;
 import org.springframework.aop.interceptor.CustomizableTraceInterceptor;
+import org.springframework.aop.interceptor.PerformanceMonitorInterceptor;
 import org.springframework.aop.support.DefaultPointcutAdvisor;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
@@ -22,7 +23,16 @@ public class AopProfiler {
 		interceptor.setExitMessage("Leaving $[methodName](..) with return value $[returnValue], took $[invocationTime]ms.");
 		return interceptor;
 	}
-
+   @Bean
+	PerformanceMonitorInterceptor performanceMonitorInterceptor (){
+       PerformanceMonitorInterceptor performanceMonitorInterceptor = new PerformanceMonitorInterceptor();
+       performanceMonitorInterceptor.setLoggerName("pl.java.scalatech");
+       performanceMonitorInterceptor.setUseDynamicLogger(true);
+       return performanceMonitorInterceptor;
+   }
+	
+	
+	
 	@Bean
 	public Advisor traceAdvisor() {
 
@@ -30,4 +40,21 @@ public class AopProfiler {
 		pointcut.setExpression("execution(public * org.springframework.data.repository.Repository+.*(..))");
 		return new DefaultPointcutAdvisor(pointcut, interceptor());
 	}
+	
+	@Bean
+    public Advisor traceServiceAdvisor() {
+
+        AspectJExpressionPointcut pointcut = new AspectJExpressionPointcut();
+        pointcut.setExpression("execution(public * pl.java.scalatech.service.dummy.*.*(..))");
+        return new DefaultPointcutAdvisor(pointcut, interceptor());
+    }
+	
+	
+	   @Bean
+	    public Advisor performanceServiceAdvisor() {
+
+	        AspectJExpressionPointcut pointcut = new AspectJExpressionPointcut();
+	        pointcut.setExpression("execution(public * pl.java.scalatech.service.dummy.*.*(..))");
+	        return new DefaultPointcutAdvisor(pointcut, performanceMonitorInterceptor());
+	    }
 }

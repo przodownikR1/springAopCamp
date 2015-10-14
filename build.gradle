@@ -55,6 +55,7 @@ dependencies {
     compile 'org.springframework:spring-tx'
     compile 'org.springframework:spring-aop'
     compile 'org.projectlombok:lombok:1.16.6'
+    compile 'com.jamonapi:jamon:2.81'
    
     compile 'javax.validation:validation-api:1.1.0.Final'
     compile 'org.hibernate:hibernate-validator:5.2.2.Final'
