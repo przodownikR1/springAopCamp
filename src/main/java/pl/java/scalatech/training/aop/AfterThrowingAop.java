@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 import lombok.extern.slf4j.Slf4j;
 
 @Aspect
-@Component
+//@Component
 @Slf4j
 public class AfterThrowingAop {
 
@@ -21,7 +21,8 @@ public class AfterThrowingAop {
     @AfterThrowing(pointcut = "serviceExLog()", throwing = "ex")
     public Object logAfterThrowing(JoinPoint joinPoint, Throwable ex) {
 
-        log.info("+++  {}",);
+        log.info("+++  {}","test");
+        return ex;
 
     }
 }

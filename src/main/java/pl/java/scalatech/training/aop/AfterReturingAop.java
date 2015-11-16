@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import lombok.extern.slf4j.Slf4j;
 
 @Aspect
-@Component
+//@Component
 @Slf4j
 public class AfterReturingAop {
 
@@ -19,7 +19,7 @@ public class AfterReturingAop {
     @AfterReturning(value = "")
     public void before() {
 
-        log.info("+++  {}",);
+        log.info("+++  {}","test/");
 
     }
 }
