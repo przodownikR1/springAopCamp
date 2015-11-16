@@ -15,14 +15,24 @@ import pl.java.scalatech.training.aop.LogJointpoint;
 @Profile("target")
 public class TargetAop extends LogJointpoint{
     
-    //TODO
-    @Pointcut("execution( *  pl.java.scalatech.training.bike.BikeService.*(..)) && target(target)")
-    public void somePointcut(Object target) {
+    @Pointcut("target(pl.java.scalatech.training.bike.BikeService)")
+    public void somePointcut() {
     }
-    
-    @Before("somePointcut(target)")
-    public void beforeTarget(JoinPoint joinPoint,Object target) {
+       
+    @Before("somePointcut()")
+    public void beforeTarget(JoinPoint joinPoint) {
         logJoinPoint(joinPoint);
       
     }
+    
+    @Pointcut("@target(pl.java.scalatech.annotation.AopClass)")
+    public void somePointcutAd() {
+    }
+    
+    @Before("somePointcutAd()")
+    public void beforeTargetAd(JoinPoint joinPoint) {
+        logJoinPoint(joinPoint);
+      
+    }
+    
 }

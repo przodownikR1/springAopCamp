@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import lombok.extern.slf4j.Slf4j;
+import pl.java.scalatech.annotation.AopMethod;
 import pl.java.scalatech.training.aop.LogJointpoint;
 
 @Aspect
@@ -30,13 +31,28 @@ public class WithinAop extends LogJointpoint{
    
     @Pointcut("within(@org.springframework.web.bind.annotation.RestController *)")
     public void controllerBean() {
-     
+   
+    }
+   /* @Pointcut("@annotation(pl.java.scalatech.annotation.AopMethod)")
+    public void annotationMethod() {
+        
+    }*/
+    //TODO
+    @Pointcut("@within(pl.java.scalatech.annotation.AopMethod)")
+    public void withinMethod() {
+        
     }
     
-    @Before("somePointcut()")
+    @Before("withinMethod()")
+    public void annotationMethodTest(JoinPoint joinPoint){
+        log.info("+++++++++++++ annotation method");
+        logJoinPoint(joinPoint);
+      
+    }
+    
+/*    @Before("somePointcut()")
     public void beforeWithin(JoinPoint joinPoint){
         logJoinPoint(joinPoint);
-        
-        
-    }
+      
+    }*/
 }
