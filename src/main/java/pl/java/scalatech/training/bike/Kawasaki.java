@@ -3,7 +3,9 @@ package pl.java.scalatech.training.bike;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class Kawasaki extends Bike implements BikeService{@Override
+public class Kawasaki extends Bike implements BikeService{
+    
+    @Override
     public void clean() {
     log.info("this  {}, method {}",this.getClass().getSimpleName(),"clean");
 
@@ -24,6 +26,12 @@ public class Kawasaki extends Bike implements BikeService{@Override
     @Override
     public Bike getByType(String type) {
         log.info("this  {}, type: {}, method {}",this.getClass().getSimpleName(),type,"returnBike");
+        return this;
+    }
+
+    @Override
+    public Bike getDummy() {
+        log.info("this  {},  method {}",this.getClass().getSimpleName(),"getDummy");
         return this;
     }
 

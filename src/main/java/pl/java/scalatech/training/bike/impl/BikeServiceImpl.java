@@ -8,6 +8,7 @@ import pl.java.scalatech.training.aop.Check;
 import pl.java.scalatech.training.bike.Bike;
 import pl.java.scalatech.training.bike.BikeService;
 import pl.java.scalatech.training.bike.Kawasaki;
+import pl.java.scalatech.training.bike.Yamaha;
 @Component
 @Slf4j
 @ToString
@@ -16,7 +17,7 @@ public class BikeServiceImpl implements BikeService {@Override
     public void clean() {
        log.info("+++ bike clean service ...");       
     }
-    @Check
+    @Check(logText="slawek")
     @Override
     public void checkTyres() {
         log.info("+++ bike checkTyres service ...");
@@ -33,6 +34,11 @@ public class BikeServiceImpl implements BikeService {@Override
     public Bike getByType(String type) {
         log.info("+++ bike getByType service ...type : {}",type);
         return new Kawasaki();
+    }
+    @Override
+    public Bike getDummy() {
+        log.info("+++ bike getDummy service .,,");
+        return new Yamaha();
     }
 
 }

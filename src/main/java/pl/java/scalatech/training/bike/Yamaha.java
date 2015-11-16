@@ -27,4 +27,10 @@ public class Yamaha extends Bike implements BikeService{
             log.info("this  {}, type: {}, method {}",this.getClass().getSimpleName(),type,"returnBike");
             return this;
         }
+        
+        @Override
+        public Bike getDummy() {
+            log.info("this  {},  method {}",this.getClass().getSimpleName(),"getDummy");
+            return this;
+        }
 }
