@@ -4,11 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class Yamaha extends Bike implements BikeService{
-    @Override
-    public void clean() {
-        log.info("this  {}, method {}",this.getClass().getSimpleName(),"clean");
 
-        }
 
         @Override
         public void checkTyres() {
@@ -27,10 +23,18 @@ public class Yamaha extends Bike implements BikeService{
             log.info("this  {}, type: {}, method {}",this.getClass().getSimpleName(),type,"returnBike");
             return this;
         }
-        
+
         @Override
         public Bike getDummy() {
             log.info("this  {},  method {}",this.getClass().getSimpleName(),"getDummy");
             return this;
         }
+
+
+        @Override
+        public void thTest(boolean th) {
+            // TODO Auto-generated method stub
+
+        }
+
 }

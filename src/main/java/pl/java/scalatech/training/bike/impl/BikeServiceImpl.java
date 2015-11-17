@@ -15,16 +15,14 @@ import pl.java.scalatech.training.bike.Yamaha;
 @Slf4j
 @ToString
 @AopClass
-public class BikeServiceImpl implements BikeService {@Override
-    
-    public void clean() {
-       log.info("+++ bike clean service ...");       
-    }
+public class BikeServiceImpl implements BikeService {
+
+
     @Check(logText="slawek")
     @Override
     public void checkTyres() {
         log.info("+++ bike checkTyres service ...");
-        
+
     }
 
     @Override
@@ -38,11 +36,21 @@ public class BikeServiceImpl implements BikeService {@Override
         log.info("+++ bike getByType service ...type : {}",type);
         return new Kawasaki();
     }
+
+    @AopMethod(str="hubabuba")
     @Override
-    @AopMethod
     public Bike getDummy() {
         log.info("+++ bike getDummy service .,,");
         return new Yamaha();
+    }
+
+    @Override
+    public void thTest(boolean th) {
+        if(th) {
+            throw new IllegalArgumentException();
+        }
+       log.info("+++ thTest .,,");
+
     }
 
 }

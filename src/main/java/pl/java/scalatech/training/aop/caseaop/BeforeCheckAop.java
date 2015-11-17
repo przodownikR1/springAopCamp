@@ -16,13 +16,14 @@ import pl.java.scalatech.training.aop.LogJointpoint;
 @Profile("check")
 public class BeforeCheckAop extends LogJointpoint {
     @Pointcut("@annotation(check)")
-    private void check() {}
-    
-    
-    @Before(value="@annotation(check)")
+    private void check1(Check check) {}
+
+
+   // @Before(value="@annotation(check)")
+     @Before(value="check1(check)")
      public void before(JoinPoint joinPoint,Check check) {
          logJoinPoint(joinPoint);
-         log.info("+++ logText :  {}",check.logText());
+         log.info("+++ logText :  {}",check);
      }
-     
+
 }
